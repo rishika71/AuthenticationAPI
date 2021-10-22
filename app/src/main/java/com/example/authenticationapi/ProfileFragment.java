@@ -111,7 +111,7 @@ public class ProfileFragment extends Fragment {
                                 am.setUser(user);
                                 binding.nameTextView.setText(user.getFirstname() + " "+ user.getLastname());
                                 binding.ageTextView.setText(user.getAge());
-                                binding.weightTextView.setText(user.getWeight()+"pounds");
+                                binding.weightTextView.setText(user.getWeight()+" pounds");
                                 binding.addressTextView.setText(user.getAddress());
                             }
                         });

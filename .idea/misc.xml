@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19010416666666666" />
+        <entry key="app/src/main/res/layout/fragment_create_new_account.xml" value="0.19010416666666666" />
         <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.19010416666666666" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.165" />
       </map>

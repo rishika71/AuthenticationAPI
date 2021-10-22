@@ -16,6 +16,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -118,7 +119,20 @@ public class LoginFragment extends Fragment {
                         e.printStackTrace();
                     }
                 }else{
-                    getAlertDialogBox(response.body().string());
+                    try {
+                        JSONObject responseObject = new JSONObject(response.body().string());
+                        String errorMessage = responseObject.getString(Utils.ERROR_KEY);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                getAlertDialogBox(errorMessage);
+                            }
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
 
 
