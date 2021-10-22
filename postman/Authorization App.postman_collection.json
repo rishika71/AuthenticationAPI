@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "0269870f-6d1a-4c15-a7b9-249dad2075c4",
+		"name": "Authorization App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "David",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "Roy",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "25",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "60",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "charlotte",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "d2@d2.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "d2@d2.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/login?email=b@b.com&password=test123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "b@b.com"
+						},
+						{
+							"key": "password",
+							"value": "test123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/protected/profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-jwt-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTZiOTYzNDZiNGZlYjQ5NWVjMzE2NzciLCJlbWFpbCI6ImJAYi5jb20iLCJpYXQiOjE2MzQ0OTUxMTR9.KBx_36rUbv1U28LmfkZO11KIRh_XvNeRjh5Fuk7sqN4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/protected/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"protected",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/update/profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "23",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "d@d.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/update/profile/616c4fef65f20a6a165e337c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"update",
+						"profile",
+						"616c4fef65f20a6a165e337c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "a@a.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://authapijs.herokuapp.com/login",
+					"protocol": "https",
+					"host": [
+						"authapijs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-jwt-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTZiOTYzNDZiNGZlYjQ5NWVjMzE2NzciLCJlbWFpbCI6ImJAYi5jb20iLCJpYXQiOjE2MzQ0OTUxMTR9.KBx_36rUbv1U28LmfkZO11KIRh_XvNeRjh5Fuk7sqN4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://authapijs.herokuapp.com/api/protected/profile",
+					"protocol": "https",
+					"host": [
+						"authapijs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"protected",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstname",
+							"value": "test8",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "test8",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "34",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "56",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test8@test8.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://authapijs.herokuapp.com/register",
+					"protocol": "https",
+					"host": [
+						"authapijs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hellomessage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://authapijs.herokuapp.com/hello",
+					"protocol": "https",
+					"host": [
+						"authapijs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "_id",
+							"value": "616b7ec17c5c008327a59164",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "alex",
+							"type": "text"
+						},
+						{
+							"key": "lastname",
+							"value": "karev",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "23",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "45",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "seattle",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "a@a.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://authapijs.herokuapp.com/update/profile",
+					"protocol": "https",
+					"host": [
+						"authapijs",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"update",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
