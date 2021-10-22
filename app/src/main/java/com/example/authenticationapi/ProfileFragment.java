@@ -121,7 +121,18 @@ public class ProfileFragment extends Fragment {
                     }
 
                 }else{
-                    getAlertDialogBox(response.body().string());
+                    try {
+                        JSONObject responseObject = new JSONObject(response.body().string());
+                        String errorMessage = responseObject.getString(Utils.ERROR_KEY);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                getAlertDialogBox(errorMessage);
+                            }
+                        });
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
