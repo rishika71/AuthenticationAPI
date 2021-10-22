@@ -23,6 +23,15 @@ public class User implements Serializable{
         this.password = password;
     }
 
+    public User(String firstname, String lastname, String age, String weight, String address, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.weight = weight;
+        this.address = address;
+        this.email = email;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -87,6 +96,8 @@ public class User implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 
     @Override
     public String toString() {

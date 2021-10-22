@@ -35,7 +35,7 @@ public class EditProfileFragment extends Fragment {
     NavController navController;
     IEditUser am;
 
-    private String firstname, lastname, age, weight, address, email, password;
+    private String firstname, lastname, age, weight, address, email;
     private String userId, token;
 
 
@@ -65,7 +65,7 @@ public class EditProfileFragment extends Fragment {
         binding.editTextWeight.setText(user.getWeight());
         binding.editTextAddress.setText(user.getAddress());
         binding.editTextEmail.setText(user.getEmail());
-        binding.editTextPassword.setText(user.getPassword());
+
         //Edit User Profile
         binding.update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +76,7 @@ public class EditProfileFragment extends Fragment {
                 weight = binding.editTextWeight.getText().toString();
                 address = binding.editTextAddress.getText().toString();
                 email = binding.editTextEmail.getText().toString();
-                password = binding.editTextPassword.getText().toString();
+
 
                 if(firstname.isEmpty()){
                     getAlertDialogBox(getResources().getString(R.string.enterFirstName));
@@ -91,7 +91,7 @@ public class EditProfileFragment extends Fragment {
                 }else if(email.isEmpty()){
                     getAlertDialogBox(getResources().getString(R.string.enterEmail));
                 }else{
-                    onProfileEdit(new User(firstname,lastname, age, weight, address, email, password ));
+                    onProfileEdit(new User(firstname,lastname, age, weight, address, email));
                 }
 
             }
