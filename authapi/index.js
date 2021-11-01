@@ -1,5 +1,4 @@
-const mongodb = require("mongodb");
-const ObjectID = mongodb.ObjectId;
+const {MongoClient, ObjectId} = require('mongodb');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const express = require("express");
@@ -13,8 +12,15 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 //create mongodb client
-const MongoClient = mongodb.MongoClient;
 const uri = process.env.DB_CONNECTION;
+
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+let collection;
+
+client.connect(err => {
+    collection = client.db("user").collection("userprofile");
+});
 
 //Middleware
 const jwtVerificationMiddleware = (req, res, next) => {
@@ -37,17 +43,6 @@ const jwtVerificationMiddleware = (req, res, next) => {
   
 
 };
-
-MongoClient.connect(uri, {useNewUrlParser: true,}, (error, client) => {
-    if(error){
-
-        console.log("Unable to connect to the mongoDB.Error", err);
-
-    }else{
-        console.log("Connected to the mongodb!!!")
-
-        const db = client.db("user");  //database
-        const collection = db.collection("userprofile"); //collection
 
          //Login Route
          app.post("/login", (req, res, next) => {
@@ -74,7 +69,7 @@ MongoClient.connect(uri, {useNewUrlParser: true,}, (error, client) => {
                                 console.log("Login success");
                                 
                                 //create JWT token
-                                let token = jwt.sign({userId:user._id, email:user.email}, process.env.TOKEN_KEY);
+                                let token = jwt.sign({userId:user._id, email:user.email}, process.env.TOKEN_KEY, {expiresIn: '1d'});
                                 res.status(200).json({token: token})
                                 
                             }else{
@@ -120,7 +115,7 @@ MongoClient.connect(uri, {useNewUrlParser: true,}, (error, client) => {
 
             //Validate if user exist in our database
             //If not, then insert user data in database
-            collection.find
+    
 
             collection.find({"email":email}).count((error, number) =>{
                 if(error){
@@ -142,7 +137,7 @@ MongoClient.connect(uri, {useNewUrlParser: true,}, (error, client) => {
                                 console.log("Registration success");
                         
                                 //create JWT token
-                                let token = jwt.sign({userId:response.insertedId, email:email}, process.env.TOKEN_KEY);
+                                let token = jwt.sign({userId:response.insertedId, email:email}, process.env.TOKEN_KEY, {expiresIn: '1d'});
                                 // return new user
                                 res.status(201).json({token: token});
                             }
@@ -222,11 +217,6 @@ MongoClient.connect(uri, {useNewUrlParser: true,}, (error, client) => {
             });
 
         });
-
-
-    }
-
-});
 
 
 
